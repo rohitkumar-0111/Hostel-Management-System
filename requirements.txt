@@ -1,0 +1,21 @@
+# Frontend & UI Core
+react>=19.0.0
+react-dom>=19.0.0
+react-router-dom>=7.13.1
+tailwindcss>=4.1.14
+framer-motion>=12.34.3
+lucide-react>=0.546.0
+
+# Backend Services
+express>=4.21.2
+better-sqlite3>=12.4.1
+
+# Security & Sessions
+bcryptjs>=3.0.3
+jsonwebtoken>=9.0.3
+cookie-parser>=1.4.7
+
+# Development Server
+vite>=6.2.0
+tsx>=4.21.0
+typescript>=5.8.2
