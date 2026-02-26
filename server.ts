@@ -8,7 +8,9 @@ import Database from "better-sqlite3";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-const db = new Database("hostel.db");
+// In production (Render), we must save the database to the persistent disk mounted at /data
+const dbPath = process.env.NODE_ENV === "production" ? "/data/hostel.db" : "hostel.db";
+const db = new Database(dbPath);
 
 // Initialize Database Tables
 db.exec(`
@@ -546,9 +548,9 @@ async function startServer() {
     });
   }
 
-  const PORT = 3000;
+  const PORT = parseInt(process.env.PORT || "3000");
   server.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`);
   });
 }
 
