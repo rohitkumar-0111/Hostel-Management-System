@@ -1,0 +1,9 @@
+{
+  "name": "Hostel OS - Enterprise Management System",
+  "description": "A professional enterprise-grade Hostel Management System with Admin, Warden, and Student panels, featuring real-time updates, fee management, and attendance tracking.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}
