@@ -4,12 +4,19 @@ import http from "http";
 import { Server } from "socket.io";
 import cookieParser from "cookie-parser";
 import path from "path";
+import fs from "fs";
 import Database from "better-sqlite3";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-// In production (Render), we must save the database to the persistent disk mounted at /data
-const dbPath = process.env.NODE_ENV === "production" ? "/data/hostel.db" : "hostel.db";
+// In production (Render), check if the /data persistent disk is actually mounted.
+let dbPath = "hostel.db";
+if (process.env.NODE_ENV === "production" && fs.existsSync("/data")) {
+  dbPath = "/data/hostel.db";
+} else if (process.env.NODE_ENV === "production") {
+  console.warn("WARNING: /data directory not found! SQLite will not be saved permanently.");
+}
+
 const db = new Database(dbPath);
 
 // Initialize Database Tables
